@@ -1,0 +1,63 @@
+api_url: "http://teamcity.jetbrains.com/guestAuth/app/rest/"
+#http_user: "admin"
+#http_password: "correct horse battery staple"
+repositories:
+  teamcity_artifactory_plugin_release: 'bt208' #ATeamCityBuildTypeId
+  teamcity_artifactory_plugin_trunk: 'bt206' #AnotherTeamCityBuildTypeId
+
+
+# 1. Project by ID
+#http://teamcity.jetbrains.com/httpAuth/app/rest/projects/id:ArtifactoryPluginForTeamCity
+
+#response
+# <project id="ArtifactoryPluginForTeamCity" name="Artifactory Plugin for TeamCity" href="/httpAuth/app/rest/projects/id:ArtifactoryPluginForTeamCity" description="" archived="false" webUrl="http://teamcity.jetbrains.com/project.html?projectId=ArtifactoryPluginForTeamCity">
+# <parentProject id="TeamCityThirdPartyPlugins" name="TeamCity Third-Party Plugins" href="/httpAuth/app/rest/projects/id:TeamCityThirdPartyPlugins"/>
+# <buildTypes>
+# <buildType id="bt208" name="Release" href="/httpAuth/app/rest/buildTypes/id:bt208" projectName="Artifactory Plugin for TeamCity" projectId="ArtifactoryPluginForTeamCity" webUrl="http://teamcity.jetbrains.com/viewType.html?buildTypeId=bt208"/>
+# <buildType id="bt206" name="Trunk" href="/httpAuth/app/rest/buildTypes/id:bt206" projectName="Artifactory Plugin for TeamCity" projectId="ArtifactoryPluginForTeamCity" webUrl="http://teamcity.jetbrains.com/viewType.html?buildTypeId=bt206"/>
+# </buildTypes>
+# <templates/>
+# <parameters/>
+# <vcsRoots href="/httpAuth/app/rest/vcs-roots?locator=project:(id:ArtifactoryPluginForTeamCity)"/>
+# <projects/>
+# </project>
+
+
+#2. Get Builds by viewType
+#http://teamcity.jetbrains.com/httpAuth/app/rest/buildTypes/id:bt208/builds/
+
+#response
+# <builds count="3">
+# <build id="35148" number="3" status="SUCCESS" buildTypeId="bt208" startDate="20100512T121117+0400" href="/httpAuth/app/rest/builds/id:35148" webUrl="http://teamcity.jetbrains.com/viewLog.html?buildId=35148&buildTypeId=bt208"/>
+# <build id="35147" number="2" status="FAILURE" buildTypeId="bt208" startDate="20100512T121021+0400" href="/httpAuth/app/rest/builds/id:35147" webUrl="http://teamcity.jetbrains.com/viewLog.html?buildId=35147&buildTypeId=bt208"/>
+# <build id="35146" number="1" status="FAILURE" buildTypeId="bt208" startDate="20100512T120505+0400" href="/httpAuth/app/rest/builds/id:35146" webUrl="http://teamcity.jetbrains.com/viewLog.html?buildId=35146&buildTypeId=bt208"/>
+# </builds>
+
+
+#3. Get build details
+#http://teamcity.jetbrains.com/httpAuth/app/rest/builds/id:35148
+#[server url]/[auth method]/app/rest/builds/id:[build_id]
+
+#response
+# <build id="35148" number="3" status="SUCCESS" href="/httpAuth/app/rest/builds/id:35148" webUrl="http://teamcity.jetbrains.com/viewLog.html?buildId=35148&buildTypeId=bt208" personal="false" history="false" pinned="false">
+# <statusText>Success</statusText>
+# <buildType id="bt208" name="Release" href="/httpAuth/app/rest/buildTypes/id:bt208" projectName="Artifactory Plugin for TeamCity" projectId="ArtifactoryPluginForTeamCity" webUrl="http://teamcity.jetbrains.com/viewType.html?buildTypeId=bt208"/>
+# <startDate>20100512T121117+0400</startDate>
+# <finishDate>20100512T121139+0400</finishDate>
+# <agent name="unit-096"/>
+# <tags/>
+# <properties/>
+# <snapshot-dependencies count="0"/>
+# <artifact-dependencies count="0"/>
+# <revisions>
+# <revision version="878">
+# <vcs-root-instance id="664" vcs-root-id="svn__http___subversion_jfrog_org_jfrog_teamcity_artifactory_plugin_branches_rel" name="svn: http://subversion.jfrog.org/jfrog/teamcity-artifactory-plugin/branches/release/" href="/httpAuth/app/rest/vcs-root-instances/id:664"/>
+# </revision>
+# </revisions>
+# <triggered date="20100512T121114+0400">
+# <user username="jfrog" name="JFrog" id="741" href="/httpAuth/app/rest/users/id:741"/>
+# </triggered>
+# <changes count="0" href="/httpAuth/app/rest/changes?locator=build:(id:35148)"/>
+# <relatedIssues href="/httpAuth/app/rest/builds/id:35148/relatedIssues"/>
+# <artifacts href="/httpAuth/app/rest/builds/id:35148/artifacts/children"/>
+# </build>  
